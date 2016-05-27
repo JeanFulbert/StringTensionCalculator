@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>StringTensionCalculator.Tests</name></assembly>
+<members>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:StringTensionsCalculator.Tests.NoteAddSpecs">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:StringTensionsCalculator.Tests.NoteComparisonSpecs">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:StringTensionsCalculator.Tests.NoteSpecs">
+
+</member>
+</members>
+</doc>
