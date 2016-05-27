@@ -31,3 +31,26 @@ module NoteAddSpecs =
             noteAfterAdded.height =! note.height
             let nameAfterAdded = enum ((int note.name) + n)
             noteAfterAdded.name =! nameAfterAdded)
+
+    [<NoteProperty>]
+    let ``Adding n semitones, where n is higher than the difference between G# and the note name, increase the name and the height`` (note:Note) =
+        (note.height < 8) ==> lazy
+
+        let diffToNextA = 12 - int note.name
+        let maxSemitonesAdd =
+            ((8 - note.height) * 12) +
+            (int NoteName.GSharp - int note.name)
+
+        let semitonesAdd = Gen.elements [diffToNextA..maxSemitonesAdd] |> Arb.fromGen
+
+        Prop.forAll semitonesAdd (fun s ->
+            let actual = note |> Notes.add s
+
+            let expectedHeightAdd = ((s - diffToNextA) / 12) + 1
+            actual.height =! note.height + expectedHeightAdd
+
+            let expectedNoteName =
+                match s % 12 with
+                | s when s >= diffToNextA -> enum (s - diffToNextA)
+                | x -> enum (int note.name  + x)
+            actual.name =! expectedNoteName)
