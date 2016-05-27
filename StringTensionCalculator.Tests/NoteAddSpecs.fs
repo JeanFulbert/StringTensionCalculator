@@ -9,6 +9,11 @@ open FsCheck.NUnit
 
 module NoteAddSpecs =
     [<NoteProperty>]
+    let ``Adding 0 semitones returns the same note`` (note:Note) =
+        let actual = note |> Notes.add 0
+        note =! actual
+
+    [<NoteProperty>]
     let ``Adding n semitones, where n is a multiple of 12, increase the height by modulo`` (note:Note) =
         (note.height < 8) ==> lazy
 
