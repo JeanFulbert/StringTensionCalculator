@@ -1,0 +1,9 @@
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\StringTensionCalculator.XML
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\StringTensionCalculator.dll
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\StringTensionCalculator.pdb
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\FSharp.Core.dll
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\FSharp.Core.xml
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\bin\Debug\fr\FSharp.Core.resources.dll
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\obj\Debug\StringTensionCalculator.fsprojResolveAssemblyReference.cache
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\obj\Debug\StringTensionCalculator.dll
+C:\Users\cmo\Documents\GitHub\StringTensionCalculator\StringTensionCalculator\StringTensionCalculator\obj\Debug\StringTensionCalculator.pdb
