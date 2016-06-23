@@ -43,6 +43,7 @@
     <Compile Include="NoteEqualitySpecs.fs" />
     <Compile Include="NoteComparisonSpecs.fs" />
     <Compile Include="NoteAddSpecs.fs" />
+    <Compile Include="NoteAddNegativeSpecs.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsCheck">
