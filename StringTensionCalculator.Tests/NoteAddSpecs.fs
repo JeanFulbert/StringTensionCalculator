@@ -21,9 +21,7 @@ module NoteAddSpecs =
         Prop.forAll octaveHeight (fun h ->
             let semitonesToAdd = h * 12
             let noteAfterAdded = note |> Notes.add semitonesToAdd
-
-            noteAfterAdded.name =! note.name
-            noteAfterAdded.height =! note.height + h)
+            noteAfterAdded =! { note with height = note.height + h })
 
     [<NoteProperty>]
     let ``Adding n semitones, where n is less than the name difference, increase the name but not the height`` (note:Note) =
@@ -32,10 +30,8 @@ module NoteAddSpecs =
         let nameAdd = Gen.elements [1..(11 - int note.name)] |> Arb.fromGen
         Prop.forAll nameAdd (fun n ->
             let noteAfterAdded = note |> Notes.add n
-
-            noteAfterAdded.height =! note.height
             let nameAfterAdded = enum ((int note.name) + n)
-            noteAfterAdded.name =! nameAfterAdded)
+            noteAfterAdded =! { note with name = nameAfterAdded })
 
     [<NoteProperty>]
     let ``Adding n semitones, where n is higher than the difference between G# and the note name, increase the name and the height`` (note:Note) =

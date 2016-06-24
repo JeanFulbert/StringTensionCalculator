@@ -15,10 +15,9 @@ module NoteAddNegativeSpecs =
         let octaveHeight = Gen.elements [1..note.height] |> Arb.fromGen
         Prop.forAll octaveHeight (fun h ->
             let semitonesToAdd = h * 12
-            let noteAfterAdded = note |> Notes.add -semitonesToAdd
+            let noteAfterNegativeAdded = note |> Notes.add -semitonesToAdd
 
-            noteAfterAdded.name =! note.name
-            noteAfterAdded.height =! note.height + h)
+            noteAfterNegativeAdded =! { note with height = note.height - h })
 
     [<NoteProperty>]
     let ``Adding -n semitones, where n is less than the name difference, decrease the name but not the height`` (note:Note) =
@@ -27,10 +26,10 @@ module NoteAddNegativeSpecs =
         let nameAdd = Gen.elements [1..(int note.name)] |> Arb.fromGen
         Prop.forAll nameAdd (fun n ->
             let noteAfterNegativeAdded = note |> Notes.add -n
-
-            noteAfterNegativeAdded.height =! note.height
+            
             let nameAfterNegativeAdded = enum ((int note.name) - n)
-            noteAfterNegativeAdded.name =! nameAfterNegativeAdded)
+            
+            noteAfterNegativeAdded =! { note with name = nameAfterNegativeAdded })
 
     [<NoteProperty>]
     let ``Adding -n semitones, where n is higher than the difference between A and the note name, increase the name and the height`` (note:Note) =
@@ -44,11 +43,14 @@ module NoteAddNegativeSpecs =
         Prop.forAll semitonesAdd (fun n ->
             let actual = note |> Notes.add -n
 
-            let expectedHeightRemoved = ((n - diffToPreviousA - 1) / 12)
+            let expectedHeightRemoved =
+                if n <= diffToPreviousA
+                then 0
+                else ((n - diffToPreviousA - 1) / 12) + 1
             actual.height =! note.height - expectedHeightRemoved
 
             let expectedNoteName =
                 match n % 12 with
                 | s when s <= diffToPreviousA -> enum (diffToPreviousA - s)
-                | s -> enum (11 - (s - diffToPreviousA))
+                | s -> enum (12 - (s - diffToPreviousA))
             actual.name =! expectedNoteName)
