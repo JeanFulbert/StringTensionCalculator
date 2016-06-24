@@ -44,6 +44,7 @@
     <Compile Include="NoteComparisonSpecs.fs" />
     <Compile Include="NoteAddSpecs.fs" />
     <Compile Include="NoteAddNegativeSpecs.fs" />
+    <Compile Include="NoteAddOptOutOfBoundsSpecs.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsCheck">
