@@ -15,7 +15,10 @@ module NoteAddNegativeSpecs =
         let octaveHeight = Gen.elements [1..note.height] |> Arb.fromGen
         Prop.forAll octaveHeight (fun h ->
             let semitonesToAdd = h * 12
-            let noteAfterNegativeAdded = note |> Notes.add -semitonesToAdd
+            let noteAfterNegativeAdded =
+                note
+                |> Notes.add -semitonesToAdd
+                |> Option.get
 
             noteAfterNegativeAdded =! { note with height = note.height - h })
 
@@ -25,7 +28,10 @@ module NoteAddNegativeSpecs =
         
         let nameAdd = Gen.elements [1..(int note.name)] |> Arb.fromGen
         Prop.forAll nameAdd (fun n ->
-            let noteAfterNegativeAdded = note |> Notes.add -n
+            let noteAfterNegativeAdded =
+                note
+                |> Notes.add -n
+                |> Option.get
             
             let nameAfterNegativeAdded = enum ((int note.name) - n)
             
@@ -41,7 +47,10 @@ module NoteAddNegativeSpecs =
         let semitonesAdd = Gen.elements [diffToPreviousA..maxSemitonesAdd] |> Arb.fromGen
 
         Prop.forAll semitonesAdd (fun n ->
-            let actual = note |> Notes.add -n
+            let actual =
+                note
+                |> Notes.add -n
+                |> Option.get
 
             let expectedHeightRemoved =
                 if n <= diffToPreviousA

@@ -10,7 +10,10 @@ open FsCheck.NUnit
 module NoteAddSpecs =
     [<NoteProperty>]
     let ``Adding 0 semitones returns the same note`` (note:Note) =
-        let actual = note |> Notes.add 0
+        let actual =
+            note
+            |> Notes.add 0
+            |> Option.get
         note =! actual
 
     [<NoteProperty>]
@@ -20,7 +23,10 @@ module NoteAddSpecs =
         let octaveHeight = Gen.elements [1..(8 - note.height)] |> Arb.fromGen
         Prop.forAll octaveHeight (fun h ->
             let semitonesToAdd = h * 12
-            let noteAfterAdded = note |> Notes.add semitonesToAdd
+            let noteAfterAdded =
+                note
+                |> Notes.add semitonesToAdd
+                |> Option.get
             noteAfterAdded =! { note with height = note.height + h })
 
     [<NoteProperty>]
@@ -29,7 +35,10 @@ module NoteAddSpecs =
         
         let nameAdd = Gen.elements [1..(11 - int note.name)] |> Arb.fromGen
         Prop.forAll nameAdd (fun n ->
-            let noteAfterAdded = note |> Notes.add n
+            let noteAfterAdded =
+                note
+                |> Notes.add n
+                |> Option.get
             let nameAfterAdded = enum ((int note.name) + n)
             noteAfterAdded =! { note with name = nameAfterAdded })
 
@@ -45,7 +54,10 @@ module NoteAddSpecs =
         let semitonesAdd = Gen.elements [diffToNextA..maxSemitonesAdd] |> Arb.fromGen
 
         Prop.forAll semitonesAdd (fun s ->
-            let actual = note |> Notes.add s
+            let actual =
+                note
+                |> Notes.add s
+                |> Option.get
 
             let expectedHeightAdd = ((s - diffToNextA) / 12) + 1
             actual.height =! note.height + expectedHeightAdd

@@ -10,10 +10,10 @@ open FsCheck.NUnit
 module NoteAddOptOutOfBoundsSpecs =
     [<NoteProperty>]
     let ``Adding semitones higher than G#8 returns None`` (note:Note) =
-        let actual = note |> Notes.addOpt 109
+        let actual = note |> Notes.add 109
         actual =! None
 
     [<NoteProperty>]
     let ``Adding semitones lower than A0 returns None`` (note:Note) =
-        let actual = note |> Notes.addOpt -109
+        let actual = note |> Notes.add -109
         actual =! None
