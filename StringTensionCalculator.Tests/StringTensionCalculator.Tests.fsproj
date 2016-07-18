@@ -71,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="app.config" />
+    <Compile Include="UnquoteHelpers.fs" />
     <Compile Include="FsCheckAddin.fs" />
     <Compile Include="FloatWithoutNaNProperty.fs" />
     <Compile Include="NoteProperty.fs" />
