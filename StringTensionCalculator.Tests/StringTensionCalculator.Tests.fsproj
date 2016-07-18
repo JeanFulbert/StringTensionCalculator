@@ -72,12 +72,14 @@
     <None Include="packages.config" />
     <None Include="app.config" />
     <Compile Include="FsCheckAddin.fs" />
+    <Compile Include="FloatWithoutNaNProperty.fs" />
     <Compile Include="NoteProperty.fs" />
     <Compile Include="NoteEqualitySpecs.fs" />
     <Compile Include="NoteComparisonSpecs.fs" />
     <Compile Include="NoteAddSpecs.fs" />
     <Compile Include="NoteAddNegativeSpecs.fs" />
     <Compile Include="NoteAddOptOutOfBoundsSpecs.fs" />
+    <Compile Include="NoteFrequencySpecs.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FsCheck">
